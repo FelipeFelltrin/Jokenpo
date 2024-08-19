@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Matemasie&family=Permanent+Marker&display=swap');
+
+    </style>
+
+    <style>
+
+        body{
+            background-color: #212121 ;
+            font-family: "Bree Serif", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #titulo{
+            text-align: center;
+            font-size:85px;
+        }
+
+        #cabeçalho{
+            height: 140px;
+        }
+
+        button {
+            border-radius: 50px;
+            background-color: #888888;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: 400ms;
+            border-width: 5px;
+            border-color: #37FF8B;
+        }
+
+
+        button:hover{
+            background-color: #37FF8B;
+            transform: scale(1.05);
+            color: black;
+            border-color: rgb(127, 128, 131);
+        }
+
+        #botoes{
+            display: flex;
+        }
+
+        #botoes{
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .placarconteudo{
+            color: #37FF8B;
+        }
+        
+        #imprimirmaquina{
+            color: rgb(127, 128, 131);
+            font-size: 30px;
+        }
+
+        #resultado{
+            color: #37FF8B;
+            margin-top: -20px;
+            font-size: 50px;
+        }
+
+        #resultadojogo{
+            display: grid;
+            justify-items: center;
+        }
+
+        #placar{
+            display: grid;
+            justify-items: center;
+            margin-top: 40px;
+        }
+
+        #tesouraimg{
+        width: 60px;
+        }
+
+        #papelimg{
+            width: 55px;
+        }
+        
+        #pedraimg{
+            width: 60px;
+        }
+        
+
+    </style>
+
+    
+
+    <script>
+        
+        var pedra = 'pedra';
+        var papel = 'papel';
+        var tesoura = 'tesoura';
+        var escolha = '';
+        var variaveis = [pedra, papel, tesoura];
+        var ptsjogador = 0;
+        var ptsmaquina = 0;
+        var empate = 0;
+        var maquina = '';
+        
+        function escolhapedra() {
+            escolha = pedra
+            console.log('Sua escolha foi: ' + escolha);
+            resultadopedra()
+        }
+        
+        function escolhapapel() {
+            escolha = papel
+            console.log('Sua escolha foi: ' + escolha);
+            resultadopapel()
+        }
+        
+        function escolhatesoura() {
+            escolha = tesoura
+            console.log('Sua escolha foi: ' + escolha);
+            resultadotesoura()
+        }
+        
+        
+        function resultadopedra() {
+            
+            var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
+            
+            if (escolha = pedra) {
+                if (maquina == 'tesoura') {
+                    ptsjogador ++
+                    document.getElementById('resultado').innerHTML = "Você venceu!"
+                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                } 
+                else if (maquina == 'papel') {
+                    ptsmaquina ++
+                    document.getElementById('resultado').innerHTML = "Você perdeu!"
+                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                    } 
+                    else if (maquina == 'pedra') {
+                        empate++
+                        document.getElementById('resultado').innerHTML = "Empate!"
+                        document.getElementById('empates').innerHTML = "Empate: " + empate
+                        document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                    }
+            }
+        }
+
+        function resultadopapel() {
+
+            var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
+
+            if (escolha = papel) {
+                if (maquina == 'tesoura') {
+                    ptsmaquina ++
+                    document.getElementById('resultado').innerHTML = "Você perdeu!"
+                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                } 
+                else if (maquina == 'papel') {
+                    empate++
+                    document.getElementById('resultado').innerHTML = "Empate!"
+                    document.getElementById('empates').innerHTML = "Empate: " + empate
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                    } 
+                    else if (maquina == 'pedra') {
+                    ptsjogador ++
+                    document.getElementById('resultado').innerHTML = "Você venceu!"
+                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                    }
+            }
+        }
+
+        function resultadotesoura() {
+
+            var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
+
+            if (escolha = tesoura) {
+                if (maquina == 'tesoura') {
+                    empate++
+                    document.getElementById('resultado').innerHTML = "Empate!"
+                    document.getElementById('empates').innerHTML = "Empate: " + empate
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                } 
+                else if (maquina == 'papel') {
+                    ptsjogador ++
+                    document.getElementById('resultado').innerHTML = "Você venceu!"
+                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                        
+                    } 
+                    else if (maquina == 'pedra') {
+                    ptsmaquina ++
+                    document.getElementById('resultado').innerHTML = "Você perdeu!"
+                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                    }
+            }
+        }
+
+        
+        
+    </script>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jokenpô</title>
+
+        <div id="cabeçalho">
+            
+            <p id="titulo" style="color: #37FF8B;">| <span style="color: rgb(127, 128, 131);">Jokenpô</span></p>
+
+        </style>
+
+        </div>
+
+    </head>
+
+    <body>
+
+        <div id="divmae">
+
+            <div id="resultadojogo">
+                <p id="imprimirmaquina"></p>
+                <p id="resultado"></p>
+            </div>
+
+            
+            <div id="botoes">
+                <button id="pedra" onclick="escolhapedra()"><img id="pedraimg" src="https://img.icons8.com/?size=100&id=37630&format=png&color=1A1A1A" alt=""></button>
+                <button id="papel" onclick="escolhapapel()"><img id="papelimg" src="https://img.icons8.com/?size=100&id=11204&format=png&color=1A1A1A" alt=""></button>
+                <button id="tesoura" onclick="escolhatesoura()"><img id="tesouraimg" src="https://img.icons8.com/?size=100&id=38895&format=png&color=1A1A1A" alt=""></button>
+            </div>
+
+            <div id="placar">
+                <p id="vitorias" class="placarconteudo"></p>
+                <p id="derrotas" class="placarconteudo"></p>
+                <p id="empates" class="placarconteudo"></p>
+                <script>
+                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                    document.getElementById('empates').innerHTML = "Empate: " + empate
+                </script>
+            </div>
+
+        </div>
+        
+    </body>
+
+</html>
