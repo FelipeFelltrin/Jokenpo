@@ -19,7 +19,8 @@
 
         #titulo{
             text-align: center;
-            font-size:85px;
+            font-size: 85px;
+            margin-top: 70px;
         }
 
         #cabeçalho{
@@ -73,6 +74,7 @@
         #resultadojogo{
             display: grid;
             justify-items: center;
+            margin-top: -50px;
         }
 
         #placar{
@@ -92,6 +94,56 @@
         #pedraimg{
             width: 60px;
         }
+
+        .botaomodo{
+            font-family: "Bree Serif", serif;
+            border-radius: 10px;
+            height: 40px;
+            font-size: 17px;
+            width: 180px;
+            border-width: 2px;
+            transform: scale(1.02);
+        }
+
+        #divmodos{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 40px;
+        }
+
+        #novamente{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .esconder {
+            display: none;
+        }
+
+        #jogarnova{
+            font-family: "Bree Serif", serif;
+            border-radius: 10px;
+            height: 40px;
+            font-size: 17px;
+            width: 180px;
+            border-width: 2px;
+            transform: scale(1.02);
+        }
+
+        #mostrarmodo{
+            display: flex;
+            justify-content: center;
+        }
+
+        #mododejogo{
+            color: #37FF8B;
+            margin-top: -20px;
+            font-size: 40px;
+        }
+
+
         
 
     </style>
@@ -112,50 +164,56 @@
         
         function escolhapedra() {
             escolha = pedra
-            console.log('Sua escolha foi: ' + escolha);
             resultadopedra()
         }
         
         function escolhapapel() {
             escolha = papel
-            console.log('Sua escolha foi: ' + escolha);
             resultadopapel()
         }
         
         function escolhatesoura() {
             escolha = tesoura
-            console.log('Sua escolha foi: ' + escolha);
             resultadotesoura()
         }
-        
-        
+
+// FUNÇÕES JOGO NORMAL --- FUNÇÕES JOGO NORMAL --- FUNÇÕES JOGO NORMAL --- FUNÇÕES JOGO NORMAL --- FUNÇÕES JOGO NORMAL --- FUNÇÕES JOGO NORMAL 
+
         function resultadopedra() {
-            
+
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
             var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
-            
-            if (escolha = pedra) {
-                if (maquina == 'tesoura') {
-                    ptsjogador ++
-                    document.getElementById('resultado').innerHTML = "Você venceu!"
-                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
-                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
-                } 
-                else if (maquina == 'papel') {
-                    ptsmaquina ++
-                    document.getElementById('resultado').innerHTML = "Você perdeu!"
-                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
-                    document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
-                    } 
-                    else if (maquina == 'pedra') {
-                        empate++
-                        document.getElementById('resultado').innerHTML = "Empate!"
-                        document.getElementById('empates').innerHTML = "Empate: " + empate
+                
+                if (escolha = pedra) {
+                    if (maquina == 'tesoura') {
+                        ptsjogador ++
+                        document.getElementById('resultado').innerHTML = "Você venceu!"
+                        document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
                         document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
-                    }
-            }
+                    } 
+                    else if (maquina == 'papel') {
+                        ptsmaquina ++
+                        document.getElementById('resultado').innerHTML = "Você perdeu!"
+                        document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                        document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                        } 
+                        else if (maquina == 'pedra') {
+                            empate++
+                            document.getElementById('resultado').innerHTML = "Empate!"
+                            document.getElementById('empates').innerHTML = "Empate: " + empate
+                            document.getElementById('imprimirmaquina').innerHTML = "Seu adversário escolheu " + maquina
+                        }
+                }
         }
 
         function resultadopapel() {
+
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
 
             var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
 
@@ -183,6 +241,10 @@
 
         function resultadotesoura() {
 
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
             var maquina = variaveis[Math.floor(Math.random() * variaveis.length)];
 
             if (escolha = tesoura) {
@@ -208,8 +270,164 @@
             }
         }
 
+// FUNÇÕES MD5 --- FUNÇÕES MD5 --- FUNÇÕES MD5 --- FUNÇÕES MD5 --- FUNÇÕES MD5 --- FUNÇÕES MD5
+
+            function escolhapedramd5() {
+            
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
+            escolha = pedra
+            resultadopedra()
+            
+            if (ptsjogador == 3) {
+                        document.getElementById('resultado').innerHTML = "Você venceu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                    }
+                    else if (ptsmaquina == 3) {
+                        document.getElementById('resultado').innerHTML = "Você perdeu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                    }
+        }
         
+        function escolhapapelmd5() {
+
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
+            escolha = papel
+            resultadopapel()
+
+            if (ptsjogador == 3) {
+                        document.getElementById('resultado').innerHTML = "Você venceu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                    }
+                    else if (ptsmaquina == 3) {
+                        document.getElementById('resultado').innerHTML = "Você perdeu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                    }
+        }
         
+        function escolhatesouramd5() {
+
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
+            escolha = tesoura
+            resultadotesoura()
+
+            if (ptsjogador == 3) {
+                        document.getElementById('resultado').innerHTML = "Você venceu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                    }
+                    else if (ptsmaquina == 3) {
+                        document.getElementById('resultado').innerHTML = "Você perdeu a MD5!"
+                        document.getElementById('imprimirmaquina').innerHTML = ""
+                        document.getElementById("jogarnova").classList.remove("esconder");
+                        botaotesoura = document.getElementById('tesoura')
+                        botaotesoura.setAttribute("onclick","");
+                        botaopedra = document.getElementById('pedra')
+                        botaopedra.setAttribute("onclick","");
+                        botaopapel = document.getElementById('papel')
+                        botaopapel.setAttribute("onclick","");
+                    }
+        }
+
+
+// FUNÇÃO MUDAR CLICK PARA MD5 --- FUNÇÃO MUDAR CLICK PARA MD5 --- FUNÇÃO MUDAR CLICK PARA MD5 --- FUNÇÃO MUDAR CLICK PARA MD5
+
+        function funçaomd5() {
+            
+            resultadopedra( document.getElementById('mododejogo').innerHTML = "Modo MD5" )
+
+            ptsjogador = 0
+            ptsmaquina = 0
+            empate = 0
+
+            document.getElementById('vitorias').innerHTML = ""
+            document.getElementById('derrotas').innerHTML = ""
+            document.getElementById('empates').innerHTML = ""
+
+            document.getElementById("jogarnova").classList.add("esconder");
+            document.getElementById('resultado').innerHTML = ""
+            document.getElementById('imprimirmaquina').innerHTML = ""
+        
+            botaopedra = document.getElementById('pedra')
+            botaopedra.setAttribute("onclick","escolhapedramd5()");
+
+            botaopapel = document.getElementById('papel')
+            botaopapel.setAttribute("onclick","escolhapapelmd5()");
+
+            botaotesoura = document.getElementById('tesoura')
+            botaotesoura.setAttribute("onclick","escolhatesouramd5()");
+
+
+        }
+
+        function funçaopadrao() {
+
+            resultadopedra( document.getElementById('mododejogo').innerHTML = "Modo padrão" )
+
+            ptsjogador = 0
+            ptsmaquina = 0
+            empate = 0
+
+            document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+            document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+            document.getElementById('empates').innerHTML = "Empates: " + empate
+
+            document.getElementById("jogarnova").classList.add("esconder"); 
+            document.getElementById('resultado').innerHTML = ""
+            document.getElementById('imprimirmaquina').innerHTML = ""
+
+            botaopedra = document.getElementById('pedra')
+            botaopedra.setAttribute("onclick","escolhapedra()");
+
+            botaopapel = document.getElementById('papel')
+            botaopapel.setAttribute("onclick","escolhapapel()");
+
+            botaotesoura = document.getElementById('tesoura')
+            botaotesoura.setAttribute("onclick","escolhatesoura()");
+        }
+            
     </script>
 
     <head>
@@ -232,6 +450,10 @@
 
         <div id="divmae">
 
+            <div id="mostrarmodo">
+                <p id="mododejogo"></p>
+            </div>
+
             <div id="resultadojogo">
                 <p id="imprimirmaquina"></p>
                 <p id="resultado"></p>
@@ -243,20 +465,35 @@
                 <button id="papel" onclick="escolhapapel()"><img id="papelimg" src="https://img.icons8.com/?size=100&id=11204&format=png&color=1A1A1A" alt=""></button>
                 <button id="tesoura" onclick="escolhatesoura()"><img id="tesouraimg" src="https://img.icons8.com/?size=100&id=38895&format=png&color=1A1A1A" alt=""></button>
             </div>
-
+            
             <div id="placar">
+
                 <p id="vitorias" class="placarconteudo"></p>
                 <p id="derrotas" class="placarconteudo"></p>
                 <p id="empates" class="placarconteudo"></p>
-                <script>
-                    document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
-                    document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
-                    document.getElementById('empates').innerHTML = "Empate: " + empate
-                </script>
-            </div>
 
+                <script>
+                    // document.getElementById('vitorias').innerHTML = "Vitórias: " + ptsjogador
+                    // document.getElementById('derrotas').innerHTML = "Derrotas: " + ptsmaquina
+                    // document.getElementById('empates').innerHTML = "Empates: " + empate
+                </script>
+
+            </div>
+            
+            
         </div>
         
+        <div id="divmodos">
+
+            <button id="md5" class="botaomodo" onclick="funçaomd5()">Modo MD5</button>
+            <button id="padrao" class="botaomodo" onclick="funçaopadrao()">Modo padrão</button>
+        
+        </div>
+
+        <div id="novamente">
+            <button id="jogarnova" class="esconder" onclick="funçaomd5()">Jogar novamente</button>
+        </div>
+
     </body>
 
 </html>
